@@ -11,7 +11,7 @@ import LandPriceInfo from "@/components/LandPriceInfo";
 import DataSource from "@/components/DataSource";
 import HazardMap from "@/components/HazardMap";
 import ApiPromoBanner from "@/components/ApiPromoBanner";
-import { inspect, inspectByCoords, parseCoordinates, ApiError } from "@/lib/api";
+import { inspect, inspectByCoords, parseCoordinates, cleanAddressInput, ApiError } from "@/lib/api";
 import type { InspectResponse } from "@/lib/types";
 
 /* ── inner component (uses useSearchParams) ──────────── */

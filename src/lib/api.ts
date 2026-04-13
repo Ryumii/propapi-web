@@ -21,10 +21,11 @@ export async function inspect(address: string): Promise<InspectResponse> {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (API_KEY) headers["X-API-Key"] = API_KEY;
 
+  const cleaned = cleanAddressInput(address);
   const res = await fetch(`${API_BASE}/v1/land/inspect`, {
     method: "POST",
     headers,
-    body: JSON.stringify({ address }),
+    body: JSON.stringify({ address: cleaned }),
   });
 
   if (!res.ok) {
@@ -64,7 +65,8 @@ export async function inspectByCoords(lat: number, lng: number): Promise<Inspect
  * Returns { lat, lng } or null if the string is not coordinates.
  */
 export function parseCoordinates(input: string): { lat: number; lng: number } | null {
-  const trimmed = input.trim();
+  // Strip postal code before coordinate check
+  const trimmed = cleanAddressInput(input);
   // Match patterns: "35.6595, 139.7004" or "35.6595 139.7004"
   const match = trimmed.match(/^(-?\d+\.?\d*)[,\s]+(-?\d+\.?\d*)$/);
   if (!match) return null;
@@ -82,6 +84,18 @@ export function parseCoordinates(input: string): { lat: number; lng: number } | 
     return { lat: b, lng: a };
   }
   return null;
+}
+
+/**
+ * Clean up address input pasted from Google Maps.
+ * - Strips postal codes (〒106-0031, 106-0031)
+ * - Removes leading/trailing whitespace
+ */
+export function cleanAddressInput(input: string): string {
+  let text = input.trim();
+  // Remove postal code: 〒106-0031 or 106-0031 at the start
+  text = text.replace(/^〒?\s*\d{3}[-−ー]?\d{4}\s*/, "");
+  return text.trim();
 }
 
 export async function fetchHazardGeoJSON(
