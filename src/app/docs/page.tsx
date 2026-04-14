@@ -154,32 +154,105 @@ export default function DocsPage() {
         </section>
 
         {/* pricing */}
-        <section className="space-y-4">
+        <section className="space-y-6">
           <h2 className="text-xl font-bold">料金プラン</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          {/* API plans */}
+          <h3 className="text-base font-semibold text-gray-700">API プラン</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 name: "Free",
                 price: "¥0",
+                limit: "100 リクエスト/月",
+                rate: "1 req/s",
+                features: ["住所検索", "ハザード情報", "用途地域", "学区情報"],
+              },
+              {
+                name: "Light",
+                price: "¥500/月",
                 limit: "1,000 リクエスト/月",
-                features: ["住所検索", "ハザード情報", "用途地域"],
+                rate: "10 req/s",
+                features: ["Free の全機能", "地価データ", "バッチ API"],
               },
               {
-                name: "Growth",
-                price: "¥9,800/月",
+                name: "Pro",
+                price: "¥2,980/月",
                 limit: "50,000 リクエスト/月",
-                features: ["Free の全機能", "高速レスポンス", "メールサポート"],
+                rate: "50 req/s",
+                highlight: true,
+                features: [
+                  "Light の全機能",
+                  "高速レスポンス",
+                  "メールサポート",
+                ],
               },
               {
-                name: "Business",
-                price: "¥49,800/月",
+                name: "Max",
+                price: "¥9,800/月",
                 limit: "500,000 リクエスト/月",
+                rate: "200 req/s",
                 features: [
-                  "Growth の全機能",
-                  "バッチ API",
+                  "Pro の全機能",
                   "SLA 99.9%",
-                  "専任サポート",
+                  "優先サポート",
                 ],
+              },
+              {
+                name: "Enterprise",
+                price: "お問い合わせ",
+                limit: "カスタム",
+                rate: "カスタム",
+                features: [
+                  "Max の全機能",
+                  "専任サポート",
+                  "SLA 99.95%",
+                  "カスタム契約",
+                ],
+              },
+            ].map((plan) => (
+              <div
+                key={plan.name}
+                className={`rounded-xl border bg-white p-5 space-y-3 ${
+                  plan.highlight ? "border-brand-400 ring-2 ring-brand-100" : ""
+                }`}
+              >
+                {plan.highlight && (
+                  <span className="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-full">
+                    おすすめ
+                  </span>
+                )}
+                <h3 className="font-bold text-lg">{plan.name}</h3>
+                <p className="text-2xl font-extrabold">{plan.price}</p>
+                <p className="text-xs text-gray-500">{plan.limit} · {plan.rate}</p>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-center gap-1.5">
+                      <span className="text-green-500">✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* LINE plans */}
+          <h3 className="text-base font-semibold text-gray-700 mt-6">LINE プラン</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
+            {[
+              {
+                name: "LINE Free",
+                price: "¥0",
+                limit: "100 回/月",
+                rate: "1 req/s",
+                features: ["LINE トーク検索", "ハザード情報", "用途地域"],
+              },
+              {
+                name: "LINE Pro",
+                price: "¥500/月",
+                limit: "1,000 回/月",
+                rate: "10 req/s",
+                features: ["Free の全機能", "地価データ", "学区情報"],
               },
             ].map((plan) => (
               <div
@@ -188,7 +261,7 @@ export default function DocsPage() {
               >
                 <h3 className="font-bold text-lg">{plan.name}</h3>
                 <p className="text-2xl font-extrabold">{plan.price}</p>
-                <p className="text-xs text-gray-500">{plan.limit}</p>
+                <p className="text-xs text-gray-500">{plan.limit} · {plan.rate}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-center gap-1.5">
