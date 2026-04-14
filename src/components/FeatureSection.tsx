@@ -7,7 +7,7 @@ const AVAILABLE_FEATURES = [
   {
     icon: "⚠️",
     name: "ハザードリスク判定",
-    description: "洪水・土砂・津波・液状化の統合リスクスコア",
+    description: "洪水・土砂・津波の統合リスクスコア",
   },
   {
     icon: "💰",
@@ -32,6 +32,11 @@ const AVAILABLE_FEATURES = [
 ];
 
 const UPCOMING_FEATURES = [
+  {
+    icon: "💧",
+    name: "液状化リスク",
+    description: "J-SHIS 液状化危険度データ連携",
+  },
   {
     icon: "🏔️",
     name: "崩落危険地域",

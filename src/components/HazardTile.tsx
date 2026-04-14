@@ -38,7 +38,7 @@ export default function HazardTile({
   expanded,
   onToggle,
 }: HazardTileProps) {
-  const { composite_score, flood, landslide, tsunami, liquefaction } = hazard;
+  const { composite_score, flood, landslide, tsunami } = hazard;
   const m = meta(composite_score.level);
   const pct = Math.min(100, (composite_score.score / 5) * 100);
 
@@ -126,20 +126,7 @@ export default function HazardTile({
             <Row label="出典" value={tsunami.source} />
           </div>
 
-          {/* Liquefaction */}
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span>💧</span>
-              <span className="font-semibold text-sm">液状化</span>
-              <span
-                className={`ml-auto text-xs px-2 py-0.5 rounded-full ${meta(liquefaction.risk_level).badge}`}
-              >
-                {meta(liquefaction.risk_level).label}
-              </span>
-            </div>
-            <Row label="備考" value={liquefaction.note} />
-            <Row label="出典" value={liquefaction.source} />
-          </div>
+
         </div>
       }
     />

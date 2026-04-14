@@ -152,7 +152,7 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
 /* ── main export ────────────────────────────────────── */
 
 export default function RiskSummary({ hazard }: { hazard: HazardResponse }) {
-  const { flood, landslide, tsunami, liquefaction, composite_score } = hazard;
+  const { flood, landslide, tsunami, composite_score } = hazard;
 
   return (
     <section className="space-y-4">
@@ -209,32 +209,6 @@ export default function RiskSummary({ hazard }: { hazard: HazardResponse }) {
             <Row label="浸水深" value={`${tsunami.depth_m} m`} />
           )}
           <Row label="出典" value={tsunami.source} />
-        </HazardCard>
-
-        {/* ── Liquefaction ─ */}
-        <HazardCard
-          title="液状化"
-          icon="🏗️"
-          level={liquefaction.risk_level}
-          score={liquefaction.risk_score}
-        >
-          <Row label="備考" value={liquefaction.note} />
-          {liquefaction.map_url && (
-            <Row
-              label="地図リンク"
-              value={
-                <a
-                  href={liquefaction.map_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-brand-600 hover:underline"
-                >
-                  J-SHIS 液状化マップを開く ↗
-                </a>
-              }
-            />
-          )}
-          <Row label="出典" value={liquefaction.source} />
         </HazardCard>
       </div>
     </section>
