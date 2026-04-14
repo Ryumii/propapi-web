@@ -30,6 +30,24 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
         {/* Search Box */}
         <div className="w-full max-w-xl mx-auto mt-8">
           <SearchForm onSearch={onSearch} />
+          {/* Example queries */}
+          <div className="flex items-center justify-center gap-4 mt-2 text-xs text-gray-400">
+            <span>例:</span>
+            <button
+              type="button"
+              onClick={() => onSearch("東京都江東区海の森3-3")}
+              className="hover:text-brand-700 hover:underline underline-offset-2 transition-colors cursor-pointer"
+            >
+              📍 東京都江東区海の森3-3
+            </button>
+            <button
+              type="button"
+              onClick={() => onSearch("35.32377910560548, 139.58011637896283")}
+              className="hover:text-brand-700 hover:underline underline-offset-2 transition-colors cursor-pointer"
+            >
+              🧭 35.3237, 139.5801
+            </button>
+          </div>
         </div>
 
         {/* CTA Buttons */}
