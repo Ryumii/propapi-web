@@ -6,11 +6,14 @@ import { useState, type FormEvent } from "react";
 interface SearchFormProps {
   compact?: boolean;
   defaultValue?: string;
+  /** When provided, call this instead of navigating to /search */
+  onSearch?: (query: string) => void;
 }
 
 export default function SearchForm({
   compact = false,
   defaultValue = "",
+  onSearch,
 }: SearchFormProps) {
   const [address, setAddress] = useState(defaultValue);
   const router = useRouter();
@@ -19,7 +22,11 @@ export default function SearchForm({
     e.preventDefault();
     const trimmed = address.trim();
     if (!trimmed) return;
-    router.push(`/search?address=${encodeURIComponent(trimmed)}`);
+    if (onSearch) {
+      onSearch(trimmed);
+    } else {
+      router.push(`/search?address=${encodeURIComponent(trimmed)}`);
+    }
   };
 
   return (
@@ -29,18 +36,18 @@ export default function SearchForm({
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          placeholder="住所 or 座標（例：東京都渋谷区渋谷2-24-12 / 35.659, 139.700）"
-          className={`w-full border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+          placeholder="住所を入力（例: 東京都江東区海の森3-3）"
+          className={`w-full border-2 border-gray-200 rounded-xl focus:border-brand-600 focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 transition ${
             compact
-              ? "px-4 py-2 pr-12 text-sm"
-              : "px-5 py-4 pr-16 text-lg"
+              ? "px-4 py-2 pr-12 text-sm shadow-sm"
+              : "px-5 py-4 pr-16 text-lg shadow-lg"
           }`}
           aria-label="住所検索"
         />
         <button
           type="submit"
           disabled={!address.trim()}
-          className={`absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white rounded-lg transition ${
+          className={`absolute right-2 top-1/2 -translate-y-1/2 bg-brand-900 hover:bg-brand-800 disabled:bg-gray-300 text-white rounded-lg transition-colors ${
             compact ? "px-2 py-1" : "px-4 py-2"
           }`}
           aria-label="検索"

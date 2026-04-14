@@ -16,8 +16,9 @@ export default function DocsPage() {
       {/* header */}
       <header className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-4">
-          <Link href="/" className="text-xl font-extrabold shrink-0">
-            Prop<span className="text-blue-600">API</span>
+          <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
+            <span className="text-brand-900">プロパピ</span>
+            <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <h1 className="text-lg font-semibold text-gray-700">
             API ドキュメント
@@ -69,7 +70,7 @@ export default function DocsPage() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-2 pr-4">
-                    <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">
+                    <span className="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-xs font-semibold">
                       GET
                     </span>
                   </td>
@@ -78,7 +79,7 @@ export default function DocsPage() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-2 pr-4">
-                    <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">
+                    <span className="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-xs font-semibold">
                       GET
                     </span>
                   </td>
@@ -87,7 +88,7 @@ export default function DocsPage() {
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-2 pr-4">
-                    <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-semibold">
+                    <span className="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-xs font-semibold">
                       GET
                     </span>
                   </td>
@@ -135,18 +136,18 @@ export default function DocsPage() {
         </section>
 
         {/* interactive docs link */}
-        <section className="rounded-xl border border-blue-100 bg-blue-50 p-6 text-center space-y-3">
-          <h2 className="text-lg font-bold text-blue-800">
+        <section className="rounded-xl border border-brand-200 bg-brand-50 p-6 text-center space-y-3">
+          <h2 className="text-lg font-bold text-brand-900">
             インタラクティブ API ドキュメント
           </h2>
-          <p className="text-sm text-blue-600">
+          <p className="text-sm text-brand-700">
             Swagger UI で全エンドポイントをブラウザから試行できます。
           </p>
           <a
             href={`${apiBase}/docs`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition"
+            className="inline-block bg-brand-900 hover:bg-brand-800 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition"
           >
             Swagger UI を開く ↗
           </a>

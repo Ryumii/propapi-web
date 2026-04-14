@@ -54,8 +54,9 @@ function SearchResultsInner() {
       {/* ── header / search bar ── */}
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center gap-4">
-          <Link href="/" className="text-xl font-extrabold shrink-0">
-            Prop<span className="text-blue-600">API</span>
+          <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
+            <span className="text-brand-900">プロパピ</span>
+            <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <div className="flex-1">
             <SearchForm compact defaultValue={address} />
@@ -83,7 +84,7 @@ function SearchResultsInner() {
         {/* loading */}
         {loading && (
           <div className="flex items-center justify-center py-20">
-            <div className="animate-spin h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full" />
+            <div className="animate-spin h-8 w-8 border-4 border-brand-700 border-t-transparent rounded-full" />
             <span className="ml-3 text-gray-500">分析中…</span>
           </div>
         )}
@@ -126,7 +127,7 @@ export default function SearchPage() {
     <Suspense
       fallback={
         <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full" />
+          <div className="animate-spin h-8 w-8 border-4 border-brand-700 border-t-transparent rounded-full" />
         </div>
       }
     >

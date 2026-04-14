@@ -227,7 +227,7 @@ export default function RiskSummary({ hazard }: { hazard: HazardResponse }) {
                   href={liquefaction.map_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-brand-600 hover:underline"
                 >
                   J-SHIS 液状化マップを開く ↗
                 </a>

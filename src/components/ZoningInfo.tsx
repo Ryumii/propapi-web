@@ -18,7 +18,7 @@ export default function ZoningInfo({ zoning }: { zoning: ZoningResponse }) {
       <div className="rounded-xl border bg-white p-4 space-y-0">
         <div className="flex items-center gap-3 pb-3 border-b border-gray-100 mb-1">
           <span className="text-2xl">🏙️</span>
-          <span className="text-xl font-bold text-blue-700">
+          <span className="text-xl font-bold text-brand-700">
             {zoning.use_district}
           </span>
           <span className="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">

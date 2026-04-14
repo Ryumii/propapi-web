@@ -50,8 +50,9 @@ export default async function AreaPage({ params }: Props) {
       {/* header */}
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center gap-4">
-          <Link href="/" className="text-xl font-extrabold shrink-0">
-            Prop<span className="text-blue-600">API</span>
+          <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
+            <span className="text-brand-900">プロパピ</span>
+            <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <div className="flex-1">
             <SearchForm compact defaultValue={`${ward.prefecture}${ward.city}`} />
@@ -91,11 +92,11 @@ export default async function AreaPage({ params }: Props) {
         </section>
 
         {/* CTA */}
-        <section className="rounded-xl bg-blue-50 border border-blue-100 p-6 text-center">
-          <h2 className="text-lg font-bold text-blue-800 mb-2">
+        <section className="rounded-xl bg-brand-50 border border-brand-200 p-6 text-center">
+          <h2 className="text-lg font-bold text-brand-900 mb-2">
             住所を入力してリスクを調べる
           </h2>
-          <p className="text-sm text-blue-600 mb-4">
+          <p className="text-sm text-brand-700 mb-4">
             {ward.city}
             内の具体的な住所を入力すると、その地点のハザード情報と用途地域を取得できます。
           </p>
@@ -161,7 +162,7 @@ export default async function AreaPage({ params }: Props) {
               <Link
                 key={n.citySlug}
                 href={`/area/${n.prefectureSlug}/${n.citySlug}`}
-                className="inline-block px-3 py-1.5 text-sm rounded-full border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition"
+                className="inline-block px-3 py-1.5 text-sm rounded-full border border-gray-200 hover:bg-brand-50 hover:border-brand-200 transition"
               >
                 {n.city}
               </Link>

@@ -92,6 +92,20 @@ export interface LandPriceResponse {
 
 // ── Inspect ─────────────────────────────────────────────
 
+export interface SchoolDistrictInfo {
+  school_type: string;
+  school_name: string;
+  administrator: string | null;
+  address: string | null;
+  source: string;
+  source_url: string | null;
+}
+
+export interface SchoolDistrictResponse {
+  elementary: SchoolDistrictInfo | null;
+  junior_high: SchoolDistrictInfo | null;
+}
+
 export interface LocationInfo {
   lat: number;
   lng: number;
@@ -115,6 +129,7 @@ export interface InspectResponse {
   hazard: HazardResponse | null;
   zoning: ZoningResponse | null;
   land_price: LandPriceResponse | null;
+  school_district: SchoolDistrictResponse | null;
   meta: InspectMeta;
 }
 
