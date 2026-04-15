@@ -236,42 +236,6 @@ export default function DocsPage() {
             ))}
           </div>
 
-          {/* LINE plans */}
-          <h3 className="text-base font-semibold text-gray-700 mt-6">LINE プラン</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
-            {[
-              {
-                name: "LINE Free",
-                price: "¥0",
-                limit: "100 回/月",
-                rate: "1 req/s",
-                features: ["LINE トーク検索", "ハザード情報", "用途地域"],
-              },
-              {
-                name: "LINE Pro",
-                price: "¥500/月",
-                limit: "1,000 回/月",
-                rate: "10 req/s",
-                features: ["Free の全機能", "地価データ", "学区情報"],
-              },
-            ].map((plan) => (
-              <div
-                key={plan.name}
-                className="rounded-xl border bg-white p-5 space-y-3"
-              >
-                <h3 className="font-bold text-lg">{plan.name}</h3>
-                <p className="text-2xl font-extrabold">{plan.price}</p>
-                <p className="text-xs text-gray-500">{plan.limit} · {plan.rate}</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-1.5">
-                      <span className="text-green-500">✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
         </section>
 
         <footer className="text-xs text-gray-400 pt-4 border-t border-gray-100">
