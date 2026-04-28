@@ -53,7 +53,7 @@ export default function SearchForm({
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          placeholder="住所を入力"
+          placeholder="住所もしくは座標を入力"
           className={`w-full border border-hairline bg-canvas rounded-pill font-body
             focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary-focus/30
             transition placeholder:text-ink-muted-48 ${
