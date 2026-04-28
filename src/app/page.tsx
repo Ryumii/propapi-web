@@ -99,16 +99,16 @@ export default function Home() {
         <div ref={serpRef}>
           {loading && (
             <div className="flex items-center justify-center py-16">
-              <div className="animate-spin h-8 w-8 border-4 border-brand-700 border-t-transparent rounded-full" />
-              <span className="ml-3 text-gray-500">分析中…</span>
+              <div className="animate-spin h-6 w-6 border-2 border-primary border-t-transparent rounded-full" />
+              <span className="ml-3 text-caption text-ink-muted-48">分析中…</span>
             </div>
           )}
 
           {error && (
-            <div className="max-w-3xl mx-auto px-4 py-8">
-              <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700 text-sm">
-                <p className="font-semibold">エラー</p>
-                <p>{error}</p>
+            <div className="max-w-[980px] mx-auto px-4 py-8">
+              <div className="rounded-lg bg-canvas border border-hairline p-4 text-body">
+                <p className="text-body-strong text-ink">エラー</p>
+                <p className="text-caption text-ink-muted-48 mt-1">{error}</p>
               </div>
             </div>
           )}

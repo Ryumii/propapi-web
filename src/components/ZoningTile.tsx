@@ -6,9 +6,9 @@ import ResultTile from "./ResultTile";
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
-    <div className="flex justify-between gap-4 py-2 border-b border-gray-100 last:border-0">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="font-medium text-sm text-right">{value}</span>
+    <div className="flex justify-between gap-4 py-2 border-b border-divider-soft last:border-0">
+      <span className="text-caption text-ink-muted-48">{label}</span>
+      <span className="text-caption-strong text-ink text-right">{value}</span>
     </div>
   );
 }
@@ -32,10 +32,10 @@ export default function ZoningTile({
       onToggle={onToggle}
       summary={
         <>
-          <p className="text-lg font-bold text-brand-900">
+          <p className="text-body-strong text-primary">
             {zoning.use_district}
           </p>
-          <div className="flex gap-4 text-sm text-gray-600">
+          <div className="flex gap-4 text-caption text-ink-muted-80">
             {zoning.building_coverage_pct != null && (
               <span>建ぺい率 {zoning.building_coverage_pct}%</span>
             )}

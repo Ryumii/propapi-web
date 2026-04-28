@@ -21,21 +21,21 @@ export default function ResultTile({
 }: ResultTileProps) {
   return (
     <div
-      className={`bg-white border border-gray-200 rounded-xl transition-all ${
+      className={`bg-canvas border border-hairline rounded-lg transition-all ${
         expanded
-          ? "sm:col-span-2 shadow-md border-brand-300"
-          : "hover:border-brand-300 hover:shadow-md cursor-pointer"
+          ? "sm:col-span-2 border-primary/30"
+          : "hover:border-primary/20 cursor-pointer"
       }`}
     >
       <button
         type="button"
         onClick={onToggle}
-        className="w-full text-left p-5 focus:outline-none"
+        className="w-full text-left p-6 focus:outline-none"
         aria-expanded={expanded}
       >
         <div className="flex items-center gap-3 mb-3">
           <span className="text-2xl">{icon}</span>
-          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <h3 className="text-body-strong text-ink">{title}</h3>
           {expanded && (
             <button
               type="button"
@@ -43,7 +43,7 @@ export default function ResultTile({
                 e.stopPropagation();
                 onToggle();
               }}
-              className="ml-auto text-gray-400 hover:text-gray-600 p-1"
+              className="ml-auto text-ink-muted-48 hover:text-ink p-1 transition-colors"
               aria-label="閉じる"
             >
               <svg
@@ -66,7 +66,7 @@ export default function ResultTile({
       </button>
 
       {!expanded && (
-        <div className="px-5 pb-4 text-xs text-brand-600 flex items-center gap-1">
+        <div className="px-6 pb-4 text-caption text-primary flex items-center gap-1">
           <svg
             className="w-3 h-3"
             fill="none"
@@ -85,7 +85,7 @@ export default function ResultTile({
       )}
 
       {expanded && (
-        <div className="px-5 pb-5 border-t border-gray-100 pt-4 animate-in fade-in duration-300">
+        <div className="px-6 pb-6 border-t border-divider-soft pt-4">
           {details}
         </div>
       )}

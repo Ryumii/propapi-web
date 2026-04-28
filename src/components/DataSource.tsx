@@ -8,7 +8,7 @@ const METHOD_LABELS: Record<string, string> = {
 
 export default function DataSource({ meta }: { meta: InspectMeta }) {
   return (
-    <section className="text-xs text-gray-400 space-y-1 pt-4 border-t border-gray-100">
+    <section className="text-fine-print text-ink-muted-48 space-y-1 pt-4 border-t border-divider-soft">
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         <span>
           ジオコーディング:{" "}
@@ -21,7 +21,7 @@ export default function DataSource({ meta }: { meta: InspectMeta }) {
       {meta.data_updated_at && (
         <p>データ更新日: {meta.data_updated_at}</p>
       )}
-      <p className="mt-2 text-[10px] leading-relaxed text-gray-300">
+      <p className="mt-2 text-micro-legal text-ink-muted-48">
         出典: 国土数値情報（国土交通省）/ アドレス・ベース・レジストリ（デジタル庁）/
         J-SHIS（防災科学技術研究所）。本情報は参考情報であり、正確性を保証するものではありません。
         重要な判断には必ず各自治体の公開資料をご確認ください。

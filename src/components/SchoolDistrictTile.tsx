@@ -6,9 +6,9 @@ import ResultTile from "./ResultTile";
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
-    <div className="flex justify-between gap-4 py-2 border-b border-gray-100 last:border-0">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="font-medium text-sm text-right">{value}</span>
+    <div className="flex justify-between gap-4 py-2 border-b border-divider-soft last:border-0">
+      <span className="text-caption text-ink-muted-48">{label}</span>
+      <span className="text-caption-strong text-ink text-right">{value}</span>
     </div>
   );
 }
@@ -35,7 +35,7 @@ export default function SchoolDistrictTile({
         expanded={expanded}
         onToggle={onToggle}
         summary={
-          <p className="text-sm text-gray-400">
+          <p className="text-caption text-ink-muted-48">
             学区情報は検索地点に対応するデータがありません
           </p>
         }
@@ -53,15 +53,15 @@ export default function SchoolDistrictTile({
       summary={
         <div className="space-y-1">
           {el && (
-            <p className="text-sm text-gray-700">
-              <span className="text-gray-500">小:</span>{" "}
-              <span className="font-medium">{el.school_name}</span>
+            <p className="text-caption text-ink">
+              <span className="text-ink-muted-48">小:</span>{" "}
+              <span className="text-caption-strong">{el.school_name}</span>
             </p>
           )}
           {jh && (
-            <p className="text-sm text-gray-700">
-              <span className="text-gray-500">中:</span>{" "}
-              <span className="font-medium">{jh.school_name}</span>
+            <p className="text-caption text-ink">
+              <span className="text-ink-muted-48">中:</span>{" "}
+              <span className="text-caption-strong">{jh.school_name}</span>
             </p>
           )}
         </div>

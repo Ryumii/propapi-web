@@ -4,7 +4,9 @@ export default function FeedbackFab() {
   return (
     <a
       href="mailto:feedback@propapi.jp?subject=機能リクエスト"
-      className="fixed bottom-6 right-6 z-40 bg-brand-900 hover:bg-brand-800 text-white px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-2 text-sm font-medium"
+      className="fixed bottom-6 right-6 z-40 bg-primary text-white
+        px-5 py-2.5 rounded-pill transition-transform active:scale-95
+        flex items-center gap-2 text-button-utility"
     >
       <svg
         className="w-4 h-4 shrink-0"

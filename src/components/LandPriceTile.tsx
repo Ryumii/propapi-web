@@ -13,9 +13,9 @@ function formatPrice(price: number): string {
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
-    <div className="flex justify-between gap-4 py-2 border-b border-gray-100 last:border-0">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="font-medium text-sm text-right">{value}</span>
+    <div className="flex justify-between gap-4 py-2 border-b border-divider-soft last:border-0">
+      <span className="text-caption text-ink-muted-48">{label}</span>
+      <span className="text-caption-strong text-ink text-right">{value}</span>
     </div>
   );
 }
@@ -57,7 +57,7 @@ export default function LandPriceTile({
         expanded={expanded}
         onToggle={onToggle}
         summary={
-          <p className="text-sm text-gray-400">
+          <p className="text-caption text-ink-muted-48">
             2km 圏内に公示地価ポイントが見つかりませんでした
           </p>
         }
@@ -75,13 +75,13 @@ export default function LandPriceTile({
       summary={
         <>
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-brand-900">
+            <span className="text-[28px] font-semibold text-primary">
               {formatPrice(nearest.price_per_sqm)}
             </span>
             <YoyBadge pct={nearest.yoy_change_pct} />
           </div>
           {nearest.address && (
-            <p className="text-sm text-gray-500 truncate">{nearest.address}</p>
+            <p className="text-caption text-ink-muted-48 truncate">{nearest.address}</p>
           )}
         </>
       }
@@ -106,16 +106,16 @@ export default function LandPriceTile({
 
           {landPrice.nearby.length > 1 && (
             <div className="mt-4">
-              <h4 className="text-sm font-semibold text-gray-600 mb-2">
+              <h4 className="text-caption-strong text-ink-muted-80 mb-2">
                 近隣の公示地価（{landPrice.nearby.length}件）
               </h4>
               {landPrice.nearby.slice(0, 5).map((p: NearbyLandPrice, i: number) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0 text-sm"
+                  className="flex items-center gap-3 py-2 border-b border-divider-soft last:border-0 text-caption"
                 >
-                  <span className="text-gray-400 w-5 text-right">{i + 1}</span>
-                  <span className="font-medium text-gray-800 flex-1">
+                  <span className="text-ink-muted-48 w-5 text-right">{i + 1}</span>
+                  <span className="text-caption-strong text-ink flex-1">
                     {formatPrice(p.price_per_sqm)}
                     {p.yoy_change_pct != null && (
                       <span
@@ -126,10 +126,10 @@ export default function LandPriceTile({
                       </span>
                     )}
                   </span>
-                  <span className="text-gray-500 text-xs">
+                  <span className="text-caption text-ink-muted-48">
                     {p.land_use ?? "—"}
                   </span>
-                  <span className="text-gray-400 text-xs w-16 text-right">
+                  <span className="text-caption text-ink-muted-48 w-16 text-right">
                     {p.distance_m}m
                   </span>
                 </div>

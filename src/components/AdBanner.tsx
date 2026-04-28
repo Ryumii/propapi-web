@@ -44,14 +44,14 @@ export default function AdBanner({
   return (
     <div ref={ref} className={`w-full ${className}`}>
       {visible && (
-        <div className="relative rounded-lg border border-gray-200 bg-gray-50 p-4 text-center min-h-[90px] flex items-center justify-center">
-          <span className="absolute top-1 right-2 text-[10px] text-gray-300">
+        <div className="relative rounded-lg border border-hairline bg-canvas-parchment p-4 text-center min-h-[90px] flex items-center justify-center">
+          <span className="absolute top-1 right-2 text-micro-legal text-ink-muted-48">
             広告
           </span>
           {/* Replace this placeholder with ad tag */}
           <div
             id={slotId}
-            className="text-xs text-gray-400"
+            className="text-caption text-ink-muted-48"
             data-ad-slot={slotId}
           >
             広告スペース（Google Ad Manager 連携後に表示）

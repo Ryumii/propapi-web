@@ -23,16 +23,16 @@ export default function SerpSection({ data, query }: SerpSectionProps) {
   };
 
   return (
-    <section id="serp" className="bg-white py-8">
-      <div className="max-w-3xl mx-auto px-4 space-y-6">
+    <section id="serp" className="bg-canvas-parchment py-12">
+      <div className="max-w-[980px] mx-auto px-4 space-y-6">
         {/* Address label */}
-        <div className="text-sm text-gray-500 pt-2">
+        <div className="text-caption text-ink-muted-48 pt-2">
           {parseCoordinates(query) ? "検索座標: " : "検索住所: "}
-          <span className="font-medium text-gray-800">
+          <span className="text-caption-strong text-ink">
             {data.address_normalized ?? query}
           </span>
           {data.location && (
-            <span className="ml-2 text-xs text-gray-400">
+            <span className="ml-2 text-fine-print text-ink-muted-48">
               ({data.location.lat.toFixed(6)}, {data.location.lng.toFixed(6)})
             </span>
           )}

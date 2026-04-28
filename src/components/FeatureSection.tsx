@@ -71,52 +71,62 @@ const UPCOMING_FEATURES = [
 
 export default function FeatureSection() {
   return (
-    <section id="features" className="bg-gray-50 py-16 sm:py-20">
-      <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">
-          機能一覧
-        </h2>
-        <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
-          PropAPI が提供するデータ項目の一覧です
-        </p>
+    <>
+      {/* Available features — parchment tile */}
+      <section id="features" className="bg-canvas-parchment py-section">
+        <div className="max-w-[980px] mx-auto px-4">
+          <h2 className="font-display text-display-lg text-ink text-center mb-2">
+            機能一覧
+          </h2>
+          <p className="text-body text-ink-muted-48 text-center mb-12 max-w-2xl mx-auto">
+            PropAPI が提供するデータ項目の一覧です
+          </p>
 
-        {/* Available */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {AVAILABLE_FEATURES.map((f) => (
-            <div
-              key={f.name}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
-            >
-              <span className="text-3xl mb-3 block">{f.icon}</span>
-              <h3 className="font-semibold text-gray-900 mb-1">{f.name}</h3>
-              <p className="text-sm text-gray-500 mb-3">{f.description}</p>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-100 text-brand-700">
-                提供中
-              </span>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {AVAILABLE_FEATURES.map((f) => (
+              <div
+                key={f.name}
+                className="bg-canvas border border-hairline rounded-lg p-6"
+              >
+                <span className="text-3xl mb-3 block">{f.icon}</span>
+                <h3 className="text-body-strong text-ink mb-1">{f.name}</h3>
+                <p className="text-caption text-ink-muted-48 mb-3">
+                  {f.description}
+                </p>
+                <span className="inline-flex items-center px-3 py-0.5 rounded-pill text-caption text-primary bg-[#e6f0ff]">
+                  提供中
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Upcoming */}
-        <h3 className="text-lg font-semibold text-gray-700 mb-6 text-center">
-          開発中の機能
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-75">
-          {UPCOMING_FEATURES.map((f) => (
-            <div
-              key={f.name}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
-            >
-              <span className="text-3xl mb-3 block">{f.icon}</span>
-              <h3 className="font-semibold text-gray-900 mb-1">{f.name}</h3>
-              <p className="text-sm text-gray-500 mb-3">{f.description}</p>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
-                開発中
-              </span>
-            </div>
-          ))}
+      {/* Upcoming features — dark tile */}
+      <section className="bg-surface-tile-1 py-section">
+        <div className="max-w-[980px] mx-auto px-4">
+          <h3 className="font-display text-tagline text-white text-center mb-8">
+            開発中の機能
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {UPCOMING_FEATURES.map((f) => (
+              <div
+                key={f.name}
+                className="bg-surface-tile-2 rounded-lg p-6"
+              >
+                <span className="text-3xl mb-3 block">{f.icon}</span>
+                <h3 className="text-body-strong text-white mb-1">{f.name}</h3>
+                <p className="text-caption text-body-muted mb-3">
+                  {f.description}
+                </p>
+                <span className="inline-flex items-center px-3 py-0.5 rounded-pill text-caption text-primary-on-dark bg-primary/10">
+                  開発中
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

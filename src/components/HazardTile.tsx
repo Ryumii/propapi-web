@@ -21,8 +21,8 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
     <div className="flex justify-between gap-4 py-1.5">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="font-medium text-sm text-right">{value}</span>
+      <span className="text-caption text-ink-muted-48">{label}</span>
+      <span className="text-caption-strong text-ink text-right">{value}</span>
     </div>
   );
 }
@@ -51,19 +51,19 @@ export default function HazardTile({
       summary={
         <>
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-[28px] font-semibold text-ink">
               {composite_score.score.toFixed(1)}
             </span>
-            <span className="text-gray-400">/ 5</span>
+            <span className="text-ink-muted-48">/ 5</span>
             <span
-              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${m.badge}`}
+              className={`inline-flex items-center px-3 py-0.5 rounded-pill text-caption ${m.badge}`}
             >
               {m.label}
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3 mt-1">
+          <div className="w-full bg-divider-soft rounded-pill h-2 mt-1">
             <div
-              className={`h-3 rounded-full ${m.bar} transition-all`}
+              className={`h-2 rounded-pill ${m.bar} transition-all`}
               style={{ width: `${pct}%` }}
             />
           </div>
