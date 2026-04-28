@@ -53,7 +53,7 @@ export default function SearchForm({
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          placeholder="住所を入力（例: 東京都江東区海の森3-3）"
+          placeholder="住所を入力"
           className={`w-full border border-hairline bg-canvas rounded-pill font-body
             focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary-focus/30
             transition placeholder:text-ink-muted-48 ${
@@ -73,7 +73,20 @@ export default function SearchForm({
             }`}
           aria-label="検索"
         >
-          <span className="text-button-utility">検索</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={compact ? "h-4 w-4" : "h-5 w-5"}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
         </button>
       </div>
     </form>
