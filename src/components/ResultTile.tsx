@@ -3,7 +3,7 @@
 import { type ReactNode } from "react";
 
 interface ResultTileProps {
-  icon: string;
+  icon: ReactNode;
   title: string;
   expanded: boolean;
   onToggle: () => void;
@@ -34,7 +34,7 @@ export default function ResultTile({
         aria-expanded={expanded}
       >
         <div className="flex items-center gap-3 mb-3">
-          <span className="text-2xl">{icon}</span>
+          {icon}
           <h3 className="text-body-strong text-ink">{title}</h3>
           {expanded && (
             <button

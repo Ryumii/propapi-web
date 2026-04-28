@@ -13,9 +13,30 @@ const LEVEL_META: Record<string, { bar: string; badge: string; label: string }> 
   unavailable: { bar: "bg-gray-300", badge: "bg-gray-100 text-gray-400", label: "データなし" },
 };
 
+const LEVEL_SEVERITY: Record<string, number> = {
+  very_high: 5,
+  high: 4,
+  medium: 3,
+  low: 2,
+  very_low: 1,
+  none: 0,
+  unavailable: -1,
+};
+
 function meta(level: string) {
   return LEVEL_META[level] ?? LEVEL_META.none;
 }
+
+function severity(level: string) {
+  return LEVEL_SEVERITY[level] ?? 0;
+}
+
+const HazardIcon = () => (
+  <svg className="w-6 h-6 text-ink-muted-48 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="M12 8v4M12 16h.01" />
+  </svg>
+);
 
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
@@ -38,46 +59,57 @@ export default function HazardTile({
   expanded,
   onToggle,
 }: HazardTileProps) {
-  const { composite_score, flood, landslide, tsunami } = hazard;
-  const m = meta(composite_score.level);
-  const pct = Math.min(100, (composite_score.score / 5) * 100);
+  const { flood, landslide, tsunami } = hazard;
+
+  // Build list of notable hazard items (medium or above), sorted by severity
+  const items: { name: string; level: string }[] = [
+    { name: "洪水浸水リスク", level: flood.risk_level },
+    { name: "土砂災害リスク", level: landslide.risk_level },
+    { name: "津波浸水リスク", level: tsunami.risk_level },
+  ]
+    .filter((i) => severity(i.level) >= 2) // low以上を表示対象
+    .sort((a, b) => severity(b.level) - severity(a.level));
+
+  const topItem = items[0];
+  const remaining = items.length - 1;
 
   return (
     <ResultTile
-      icon="⚠️"
+      icon={<HazardIcon />}
       title="ハザード"
       expanded={expanded}
       onToggle={onToggle}
       summary={
-        <>
-          <div className="flex items-center gap-3">
-            <span className="text-[28px] font-semibold text-ink">
-              {composite_score.score.toFixed(1)}
-            </span>
-            <span className="text-ink-muted-48">/ 5</span>
-            <span
-              className={`inline-flex items-center px-3 py-0.5 rounded-pill text-caption ${m.badge}`}
-            >
-              {m.label}
-            </span>
+        topItem ? (
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-body-strong text-ink">{topItem.name}</span>
+              <span
+                className={`inline-flex items-center px-3 py-0.5 rounded-pill text-caption ${meta(topItem.level).badge}`}
+              >
+                {meta(topItem.level).label}
+              </span>
+            </div>
+            {remaining > 0 && (
+              <p className="text-caption text-primary">
+                ほか{remaining}項目 →
+              </p>
+            )}
           </div>
-          <div className="w-full bg-divider-soft rounded-pill h-2 mt-1">
-            <div
-              className={`h-2 rounded-pill ${m.bar} transition-all`}
-              style={{ width: `${pct}%` }}
-            />
-          </div>
-        </>
+        ) : (
+          <p className="text-caption text-ink-muted-48">
+            検出されたリスクはありません
+          </p>
+        )
       }
       details={
         <div className="space-y-4">
           {/* Flood */}
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span>🌊</span>
-              <span className="font-semibold text-sm">洪水浸水</span>
+              <span className="text-caption-strong text-ink">洪水浸水</span>
               <span
-                className={`ml-auto text-xs px-2 py-0.5 rounded-full ${meta(flood.risk_level).badge}`}
+                className={`ml-auto text-caption px-2 py-0.5 rounded-pill ${meta(flood.risk_level).badge}`}
               >
                 {meta(flood.risk_level).label}
               </span>
@@ -97,10 +129,9 @@ export default function HazardTile({
           {/* Landslide */}
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span>⛰️</span>
-              <span className="font-semibold text-sm">土砂災害</span>
+              <span className="text-caption-strong text-ink">土砂災害</span>
               <span
-                className={`ml-auto text-xs px-2 py-0.5 rounded-full ${meta(landslide.risk_level).badge}`}
+                className={`ml-auto text-caption px-2 py-0.5 rounded-pill ${meta(landslide.risk_level).badge}`}
               >
                 {meta(landslide.risk_level).label}
               </span>
@@ -112,10 +143,9 @@ export default function HazardTile({
           {/* Tsunami */}
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span>🌊</span>
-              <span className="font-semibold text-sm">津波浸水</span>
+              <span className="text-caption-strong text-ink">津波浸水</span>
               <span
-                className={`ml-auto text-xs px-2 py-0.5 rounded-full ${meta(tsunami.risk_level).badge}`}
+                className={`ml-auto text-caption px-2 py-0.5 rounded-pill ${meta(tsunami.risk_level).badge}`}
               >
                 {meta(tsunami.risk_level).label}
               </span>

@@ -3,6 +3,13 @@
 import type { LandPriceResponse, NearbyLandPrice } from "@/lib/types";
 import ResultTile from "./ResultTile";
 
+const LandPriceIcon = () => (
+  <svg className="w-6 h-6 text-ink-muted-48 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 3v18h18" />
+    <path d="M7 16v-3M11 16V9M15 16v-5M19 16V7" />
+  </svg>
+);
+
 function formatPrice(price: number): string {
   if (price >= 10000) {
     return `${(price / 10000).toFixed(1)}万円/㎡`;
@@ -52,7 +59,7 @@ export default function LandPriceTile({
   if (!nearest) {
     return (
       <ResultTile
-        icon="💰"
+        icon={<LandPriceIcon />}
         title="公示地価"
         expanded={expanded}
         onToggle={onToggle}
@@ -68,7 +75,7 @@ export default function LandPriceTile({
 
   return (
     <ResultTile
-      icon="💰"
+      icon={<LandPriceIcon />}
       title="公示地価"
       expanded={expanded}
       onToggle={onToggle}

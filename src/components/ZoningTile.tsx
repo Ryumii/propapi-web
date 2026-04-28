@@ -3,6 +3,12 @@
 import type { ZoningResponse } from "@/lib/types";
 import ResultTile from "./ResultTile";
 
+const ZoningIcon = () => (
+  <svg className="w-6 h-6 text-ink-muted-48 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 9h.01M15 9h.01M9 13h.01M15 13h.01" />
+  </svg>
+);
+
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
@@ -26,7 +32,7 @@ export default function ZoningTile({
 }: ZoningTileProps) {
   return (
     <ResultTile
-      icon="🏙️"
+      icon={<ZoningIcon />}
       title="用途地域"
       expanded={expanded}
       onToggle={onToggle}

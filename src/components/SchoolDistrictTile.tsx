@@ -3,6 +3,12 @@
 import type { SchoolDistrictResponse } from "@/lib/types";
 import ResultTile from "./ResultTile";
 
+const SchoolIcon = () => (
+  <svg className="w-6 h-6 text-ink-muted-48 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3L1 9l11 6 9-4.91V17M5 13.18v4L12 21l7-3.82v-4" />
+  </svg>
+);
+
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   if (value == null) return null;
   return (
@@ -30,7 +36,7 @@ export default function SchoolDistrictTile({
   if (!el && !jh) {
     return (
       <ResultTile
-        icon="🏫"
+        icon={<SchoolIcon />}
         title="学区"
         expanded={expanded}
         onToggle={onToggle}
@@ -46,7 +52,7 @@ export default function SchoolDistrictTile({
 
   return (
     <ResultTile
-      icon="🏫"
+      icon={<SchoolIcon />}
       title="学区"
       expanded={expanded}
       onToggle={onToggle}
