@@ -35,17 +35,17 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
             <span>例:</span>
             <button
               type="button"
-              onClick={() => onSearch("東京都江東区海の森3-3")}
+              onClick={() => onSearch("東京都足立区小台１丁目２０")}
               className="hover:text-primary transition-colors cursor-pointer"
             >
-              東京都江東区海の森3-3
+              東京都足立区小台１丁目２０
             </button>
             <button
               type="button"
-              onClick={() => onSearch("35.32377910560548, 139.58011637896283")}
+              onClick={() => onSearch("35.8076970969865, 137.24090883375177")}
               className="hover:text-primary transition-colors cursor-pointer"
             >
-              35.3237, 139.5801
+              35.8077, 137.2409
             </button>
           </div>
         </div>
