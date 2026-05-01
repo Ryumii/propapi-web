@@ -252,13 +252,13 @@ export default function FeatureSection() {
   return (
     <>
       {/* Available features — parchment tile */}
-      <section id="features" className="bg-canvas-parchment py-section">
+      <section id="features" className="bg-canvas-parchment py-section" aria-label="PropAPI 提供中の不動産データAPI機能">
         <div className="max-w-[980px] mx-auto px-4">
           <h2 className="font-display text-display-lg text-ink text-center mb-2">
             機能一覧
           </h2>
           <p className="text-body text-ink-muted-48 text-center mb-12 max-w-2xl mx-auto">
-            PropAPI が提供するデータ項目の一覧です
+            ぷろぱぴ（PropAPI）が提供する不動産土地情報データ項目の一覧です。住所を指定するだけでこれらのデータをAPI経由で即時取得できます。
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -1,126 +1,135 @@
-"use client";
-
-import { useCallback, useEffect, useRef, useState } from "react";
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
-import SerpSection from "@/components/SerpSection";
-import FeatureSection from "@/components/FeatureSection";
-import FeedbackFab from "@/components/FeedbackFab";
-import {
-  inspect,
-  inspectByCoords,
-  parseCoordinates,
-  ApiError,
-} from "@/lib/api";
-import type { InspectResponse } from "@/lib/types";
+import HomeClient from "./HomeClient";
+
+export const metadata: Metadata = {
+  title: "ぷろぱぴ（PropAPI） | 不動産土地情報API — ハザードマップ・用途地域・地価を住所から一括取得",
+  description:
+    "ぷろぱぴ（プロパピ・PropAPI）は不動産仲介・保険査定・ローン審査向けの土地情報BaaS。洪水・土砂災害・津波ハザードマップ、用途地域、公示地価、学区情報を住所ひとつで即時取得できるREST API。",
+  keywords: [
+    "ぷろぱぴ", "プロパピ", "PropAPI",
+    "不動産API", "土地情報API", "ハザードマップAPI",
+    "用途地域API", "地価API", "学区情報API",
+    "不動産テック", "不動産DX", "不動産データ",
+    "洪水リスク", "土砂災害", "津波リスク",
+    "BaaS", "土地情報", "不動産情報",
+  ],
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://propapi.jp",
+  },
+  openGraph: {
+    title: "ぷろぱぴ PropAPI | 不動産土地情報API",
+    description:
+      "ハザードマップ・用途地域・地価・学区情報を住所から即時取得。不動産業務を効率化するAPI。",
+    url: "https://propapi.jp",
+    siteName: "PropAPI",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ぷろぱぴ PropAPI | 不動産土地情報API",
+    description:
+      "ハザードマップ・用途地域・地価・学区情報を住所から即時取得。不動産業務を効率化するAPI。",
+  },
+};
+
+/* ── JSON-LD structured data (SSR, visible to AI crawlers) ── */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "ぷろぱぴ",
+      alternateName: ["プロパピ", "PropAPI", "PROPAPI"],
+      url: "https://propapi.jp",
+      description:
+        "不動産仲介・保険査定・ローン審査に必要な土地情報をワンストップ提供するAPI。",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://propapi.jp/?address={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "PropAPI",
+      alternateName: ["プロパピ", "PropAPI"],
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Any",
+      url: "https://propapi.jp",
+      description:
+        "住所を入力するだけで洪水・土砂災害・津波のハザードリスク、用途地域、公示地価、学区情報を一括取得できる不動産土地情報REST API。",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "JPY",
+        description: "無料プランあり",
+      },
+      featureList: [
+        "洪水・土砂災害・津波ハザードリスク判定",
+        "用途地域・建ぺい率・容積率情報",
+        "公示地価データ取得",
+        "小学校・中学校 学区情報",
+        "ハザードマップ GeoJSON オーバーレイ",
+        "住所→座標ジオコーディング",
+        "MCP (Model Context Protocol) 経由のLLM連携",
+      ],
+    },
+    {
+      "@type": "Organization",
+      name: "PropAPI",
+      alternateName: ["プロパピ", "PropAPI"],
+      url: "https://propapi.jp",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "ぷろぱぴ（PropAPI）とは何ですか？",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "ぷろぱぴ（PropAPI）は、住所を入力するだけで洪水・土砂災害・津波のハザードリスク、用途地域、公示地価、学区情報を一括取得できる不動産土地情報APIです。不動産仲介、保険査定、ローン審査の業務効率化に利用できます。",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "どのようなデータを取得できますか？",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "洪水・土砂災害・津波のハザードマップ情報、用途地域（建ぺい率・容積率・防火地域）、国土交通省の公示地価、小学校・中学校の学区情報、住所のジオコーディング（座標変換）が取得できます。",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "料金はかかりますか？",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "無料プランがあり、基本的な機能を無料で利用できます。大量のAPIコールが必要な場合は有料プランをご用意しています。",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "APIの利用方法を教えてください",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "REST APIとして提供しており、住所または緯度経度を指定してHTTPリクエストを送るだけで利用できます。また、MCP（Model Context Protocol）経由でClaude DesktopやChatGPTなどのLLMから直接利用することも可能です。",
+          },
+        },
+      ],
+    },
+  ],
+};
 
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [data, setData] = useState<InspectResponse | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const serpRef = useRef<HTMLDivElement>(null);
-
-  const fetchData = useCallback(async (addr: string) => {
-    setLoading(true);
-    setError(null);
-    setData(null);
-    try {
-      const coords = parseCoordinates(addr);
-      const res = coords
-        ? await inspectByCoords(coords.lat, coords.lng)
-        : await inspect(addr);
-      setData(res);
-    } catch (e) {
-      if (e instanceof ApiError) {
-        setError(e.message);
-      } else {
-        setError("サーバーとの通信に失敗しました。");
-      }
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  const handleSearch = useCallback(
-    (q: string) => {
-      setQuery(q);
-      window.history.pushState({}, "", `?address=${encodeURIComponent(q)}`);
-      fetchData(q);
-    },
-    [fetchData],
-  );
-
-  // Scroll to SERP when data loads
-  useEffect(() => {
-    if (data && serpRef.current) {
-      serpRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [data]);
-
-  // Handle initial URL with ?address= param
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const addr = params.get("address");
-    if (addr) {
-      setQuery(addr);
-      fetchData(addr);
-    }
-  }, [fetchData]);
-
-  // Handle browser back/forward
-  useEffect(() => {
-    const onPop = () => {
-      const params = new URLSearchParams(window.location.search);
-      const addr = params.get("address");
-      if (addr) {
-        setQuery(addr);
-        fetchData(addr);
-      } else {
-        setQuery("");
-        setData(null);
-        setError(null);
-      }
-    };
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, [fetchData]);
-
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-
-      <main className="flex-1">
-        <HeroSection onSearch={handleSearch} />
-
-        {/* SERP: inline search results */}
-        <div ref={serpRef}>
-          {loading && (
-            <div className="flex items-center justify-center py-16">
-              <div className="animate-spin h-6 w-6 border-2 border-primary border-t-transparent rounded-full" />
-              <span className="ml-3 text-caption text-ink-muted-48">分析中…</span>
-            </div>
-          )}
-
-          {error && (
-            <div className="max-w-[980px] mx-auto px-4 py-8">
-              <div className="rounded-lg bg-canvas border border-hairline p-4 text-body">
-                <p className="text-body-strong text-ink">エラー</p>
-                <p className="text-caption text-ink-muted-48 mt-1">{error}</p>
-              </div>
-            </div>
-          )}
-
-          {data && <SerpSection data={data} query={query} />}
-        </div>
-
-        <FeatureSection />
-      </main>
-
-      <Footer />
-      <FeedbackFab />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomeClient />
+    </>
   );
 }

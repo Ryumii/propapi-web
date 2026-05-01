@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "利用規約 | PropAPI",
   description: "PropAPI の利用規約。API およびウェブサイトのご利用条件。",
+  robots: { index: false, follow: false },
 };
 
 export default function TermsPage() {

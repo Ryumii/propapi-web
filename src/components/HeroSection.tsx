@@ -7,18 +7,19 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onSearch }: HeroSectionProps) {
   return (
-    <section className="bg-canvas py-section">
+    <section className="bg-canvas py-section" aria-label="ぷろぱぴ — 不動産土地情報API">
       <div className="max-w-[980px] mx-auto px-4 text-center">
         <h1 className="font-display text-hero-display text-ink mb-2 sm:text-hero-display text-[34px] leading-[1.1]">
-          プロパピ
+          ぷろぱぴ
         </h1>
         <p className="font-display text-lead text-ink mb-1">
-          土地のすべてがわかる BaaS
+          土地のすべてがわかる <abbr title="Backend as a Service" className="no-underline">BaaS</abbr>
         </p>
         <p className="text-body text-ink-muted-48 max-w-lg mx-auto mb-2">
-          不動産仲介・保険査定・ローン審査に必要な土地情報を
+          不動産仲介・保険査定・ローン審査に必要な
+          <strong>ハザードマップ・用途地域・公示地価・学区情報</strong>を
           <br className="hidden sm:block" />
-          ワンストップで提供。業務工数を大幅に削減します。
+          住所ひとつで一括取得。業務工数を大幅に削減します。
         </p>
         <a
           href="#features"

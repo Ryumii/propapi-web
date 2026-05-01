@@ -1,0 +1,69 @@
+User-agent: *
+Disallow: /area
+Disallow: /dashboard
+Disallow: /docs
+Disallow: /login
+Disallow: /register
+Disallow: /report
+Disallow: /search
+Disallow: /terms
+Disallow: /privacy
+
+# AI Search crawlers — allow top page and llms.txt
+User-agent: GPTBot
+Allow: /$
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /area
+Disallow: /dashboard
+Disallow: /docs
+Disallow: /login
+Disallow: /register
+Disallow: /report
+Disallow: /search
+Disallow: /terms
+Disallow: /privacy
+
+User-agent: ChatGPT-User
+Allow: /$
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /area
+Disallow: /dashboard
+Disallow: /docs
+Disallow: /login
+Disallow: /register
+Disallow: /report
+Disallow: /search
+Disallow: /terms
+Disallow: /privacy
+
+User-agent: ClaudeBot
+Allow: /$
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /area
+Disallow: /dashboard
+Disallow: /docs
+Disallow: /login
+Disallow: /register
+Disallow: /report
+Disallow: /search
+Disallow: /terms
+Disallow: /privacy
+
+User-agent: PerplexityBot
+Allow: /$
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /area
+Disallow: /dashboard
+Disallow: /docs
+Disallow: /login
+Disallow: /register
+Disallow: /report
+Disallow: /search
+Disallow: /terms
+Disallow: /privacy
+
+Sitemap: https://propapi.jp/sitemap.xml

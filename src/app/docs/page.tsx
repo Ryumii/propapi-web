@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "API ドキュメント | PropAPI",
   description:
     "PropAPI の REST API リファレンス。ハザードリスク・用途地域を住所から取得できます。",
+  robots: { index: false, follow: false },
 };
 
 export default function DocsPage() {
@@ -17,7 +18,7 @@ export default function DocsPage() {
       <header className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-4">
           <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
-            <span className="text-brand-900">プロパピ</span>
+            <span className="text-brand-900">ぷろぱぴ</span>
             <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <h1 className="text-lg font-semibold text-gray-700">

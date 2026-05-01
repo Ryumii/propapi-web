@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "プライバシーポリシー | PropAPI",
   description: "PropAPI のプライバシーポリシー。個人情報の取り扱いについて。",
+  robots: { index: false, follow: false },
 };
 
 export default function PrivacyPage() {

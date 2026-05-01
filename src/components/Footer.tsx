@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-[980px] mx-auto px-4 space-y-6">
         {/* Brand */}
         <div className="flex items-baseline gap-2">
-          <span className="text-body-strong text-ink">プロパピ</span>
+          <span className="text-body-strong text-ink">ぷろぱぴ</span>
           <span className="text-fine-print text-ink-muted-48">PropAPI</span>
         </div>
 
