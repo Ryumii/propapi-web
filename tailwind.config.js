@@ -49,6 +49,11 @@ module.exports = {
         },
       },
       fontFamily: {
+        logo: [
+          "Zen Maru Gothic",
+          "\"Hiragino Maru Gothic Pro\"",
+          "sans-serif",
+        ],
         display: [
           "Inter",
           "SF Pro Display",

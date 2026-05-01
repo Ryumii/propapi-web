@@ -18,7 +18,7 @@ export default function DocsPage() {
       <header className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-4">
           <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
-            <span className="text-brand-900">ぷろぱぴ</span>
+            <span className="font-logo font-bold text-brand-900">ぷろぱぴ</span>
             <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <h1 className="text-lg font-semibold text-gray-700">

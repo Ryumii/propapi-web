@@ -6,7 +6,7 @@ export default function Header() {
       {/* Global Nav — Apple style: thin, dark, minimal */}
       <div className="max-w-[980px] mx-auto px-4 h-11 flex items-center justify-between">
         <Link href="/" className="flex items-baseline gap-1.5">
-          <span className="text-[14px] font-semibold text-white tracking-tight">
+          <span className="font-logo text-[15px] font-bold text-white tracking-tight">
             ぷろぱぴ
           </span>
           <span className="text-nav-link text-body-muted">PropAPI</span>

@@ -55,7 +55,7 @@ function SearchResultsInner() {
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center gap-4">
           <Link href="/" className="text-xl font-extrabold shrink-0 flex items-baseline gap-1">
-            <span className="text-brand-900">プロパピ</span>
+            <span className="font-logo font-bold text-brand-900">ぷろぱぴ</span>
             <span className="text-xs text-gray-400">PropAPI</span>
           </Link>
           <div className="flex-1">
