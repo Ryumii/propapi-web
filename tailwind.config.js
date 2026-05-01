@@ -56,6 +56,8 @@ module.exports = {
         ],
         display: [
           "Inter",
+          "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans",
           "SF Pro Display",
           "system-ui",
           "-apple-system",
@@ -64,6 +66,8 @@ module.exports = {
         ],
         body: [
           "Inter",
+          "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans",
           "SF Pro Text",
           "system-ui",
           "-apple-system",

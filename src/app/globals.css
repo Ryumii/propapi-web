@@ -4,8 +4,8 @@
 
 @layer base {
   html {
-    font-family: "Inter", "SF Pro Text", system-ui, -apple-system,
-      BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+      "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
