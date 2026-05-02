@@ -9,7 +9,7 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
   return (
     <section className="bg-canvas py-section" aria-label="ぷろぱぴ — 不動産土地情報API">
       <div className="max-w-[980px] mx-auto px-4 text-center">
-        <h1 className="font-logo text-[48px] sm:text-[64px] font-black text-ink mb-2 leading-[1.1] tracking-tight">
+        <h1 className="font-logo text-[48px] sm:text-[64px] font-black text-[#1a5632] mb-2 leading-[1.1] tracking-tight">
           ぷろぱぴ
         </h1>
         <p className="font-display text-lead text-ink mb-1">
