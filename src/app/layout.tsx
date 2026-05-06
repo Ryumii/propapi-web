@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   },
   description:
     "不動産仲介・保険査定・ローン審査に必要な土地情報をワンストップ提供。洪水・土砂災害・津波リスク、用途地域、公示地価、学区情報を住所から即時取得。",
-  robots: { index: false, follow: false },
   metadataBase: new URL("https://propapi.jp"),
   openGraph: {
     title: "ぷろぱぴ PropAPI | 土地情報BaaS",
