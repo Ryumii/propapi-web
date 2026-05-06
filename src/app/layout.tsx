@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,7 +40,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-canvas text-ink">{children}</body>
+      <body className="font-body bg-canvas text-ink">
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }

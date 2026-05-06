@@ -37,6 +37,8 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: https://api.propapi.jp
           NEXT_PUBLIC_API_KEY: ${{ secrets.PROPAPI_KEY }}
+          NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
+          NEXT_PUBLIC_CLARITY_ID: ${{ secrets.CLARITY_ID }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
